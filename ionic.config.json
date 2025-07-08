@@ -1,0 +1,7 @@
+{
+  "name": "LancesApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
