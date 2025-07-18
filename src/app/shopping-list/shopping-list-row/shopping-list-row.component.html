@@ -1,4 +1,5 @@
 <ion-item>
+  <ion-reorder slot="start"></ion-reorder>
   <ion-checkbox slot="start"></ion-checkbox>
 
   <div class="editable-label">
@@ -19,12 +20,13 @@
     </ng-template>
   </div>
 
-  <ion-fab-button
+  <ion-button
+    fill="clear"
     size="small"
-    color="light"
-    (click)="emitItemDelted()"
+    (click)="emitItemDeleted()"
     slot="end"
+    aria-label="Delete item"
   >
-    <ion-icon name="trash" color="dark"></ion-icon>
-  </ion-fab-button>
+    <ion-icon name="trash" color="medium"></ion-icon>
+  </ion-button>
 </ion-item>

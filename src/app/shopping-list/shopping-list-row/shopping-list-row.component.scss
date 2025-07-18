@@ -1,4 +1,23 @@
 ion-checkbox {
   width: 0px;
   flex: 0 0 25px;
+  margin-right: 0px;
+}
+ion-item {
+  display: flex;
+  align-items: center;
+}
+
+.editable-label {
+  flex-grow: 1; /* take all remaining space */
+  overflow: hidden; /* prevent overflow */
+  white-space: nowrap; /* no wrapping */
+  text-overflow: ellipsis; /* show ... if too long */
+}
+
+ion-button[slot="end"] {
+  flex-shrink: 0; /* don’t shrink */
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
 }

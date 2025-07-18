@@ -35,6 +35,10 @@ export class ShoppingListComponent implements OnInit {
     this.items.push({ name: 'New Item', completed: false });
   }
 
+  public deleteItem(index: number) {
+    this.items.splice(index, 1);
+  }
+
   public onIonInfinite(event: InfiniteScrollCustomEvent) {
     this.generateItems();
     setTimeout(() => {
@@ -42,8 +46,10 @@ export class ShoppingListComponent implements OnInit {
     }, 500);
   }
 
-  public deleteItem(index: number) {
-    this.items.splice(index, 1);
+  public reorderItems(event: any) {
+    const itemToMove = this.items.splice(event.detail.from, 1)[0];
+    this.items.splice(event.detail.to, 0, itemToMove);
+    event.detail.complete();
   }
 
   private generateItems() {

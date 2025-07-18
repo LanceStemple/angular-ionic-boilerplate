@@ -12,13 +12,13 @@ import { add, trash, trashBin } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 
 import { SharedModule } from './../../shared.module';
-import { IonInput } from '@ionic/angular/standalone';
+import { IonInput, IonButton } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-shopping-list-row',
   templateUrl: './shopping-list-row.component.html',
   styleUrls: ['./shopping-list-row.component.scss'],
-  imports: [IonInput, SharedModule],
+  imports: [IonButton, IonInput, SharedModule],
 })
 export class ShoppingListRowComponent implements OnInit {
   @ViewChild('inputEl', { static: false }) inputElRef!: IonInput;
@@ -52,7 +52,7 @@ export class ShoppingListRowComponent implements OnInit {
     }
   }
 
-  public emitItemDelted() {
+  public emitItemDeleted() {
     this.itemDeleted.emit(this.index);
   }
 

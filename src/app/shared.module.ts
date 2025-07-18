@@ -19,6 +19,8 @@ import {
   IonIcon,
   IonInfiniteScroll,
   IonInfiniteScrollContent,
+  IonReorder,
+  IonReorderGroup,
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 
@@ -44,11 +46,14 @@ import { FormsModule } from '@angular/forms';
     IonInfiniteScroll,
     IonInfiniteScrollContent,
     FormsModule,
+    IonReorder,
+    IonReorderGroup,
   ],
   exports: [
     CommonModule,
     IonMenu,
     IonButtons,
+    IonButton,
     IonMenuButton,
     IonHeader,
     IonTitle,
@@ -65,6 +70,8 @@ import { FormsModule } from '@angular/forms';
     IonInfiniteScroll,
     IonInfiniteScrollContent,
     FormsModule,
+    IonReorder,
+    IonReorderGroup,
   ],
 })
 export class SharedModule {}

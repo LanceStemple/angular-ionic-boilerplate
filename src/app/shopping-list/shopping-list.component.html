@@ -7,15 +7,20 @@
   </ion-fab>
   <h1 class="ms-3">Shopping List</h1>
   <div *ngIf="items.length">
-    <ion-list [inset]="true">
-      @for (item of items; track item; let index = $index) {
-      <app-shopping-list-row
-        [autoFocus]="addMode"
-        [itemName]="item.name"
-        [index]="index"
-        (itemDeleted)="deleteItem($event)"
-      ></app-shopping-list-row>
-      }
+    <ion-list>
+      <ion-reorder-group
+        (ionItemReorder)="reorderItems($event)"
+        disabled="false"
+      >
+        @for (item of items; track item; let index = $index) {
+        <app-shopping-list-row
+          [autoFocus]="addMode"
+          [itemName]="item.name"
+          [index]="index"
+          (itemDeleted)="deleteItem($event)"
+        ></app-shopping-list-row>
+        }
+      </ion-reorder-group>
     </ion-list>
   </div>
   <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
