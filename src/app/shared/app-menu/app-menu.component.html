@@ -1,0 +1,26 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item button detail="false" (click)="navigate('/home')"
+          >Home</ion-item
+        >
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item button detail="false" (click)="navigate('/shopping-list')"
+          >Shopping List</ion-item
+        >
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item button detail="false" (click)="navigate('/settings')"
+          >Settings</ion-item
+        >
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

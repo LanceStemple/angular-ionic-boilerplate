@@ -1,0 +1,30 @@
+<ion-item>
+  <ion-checkbox slot="start"></ion-checkbox>
+
+  <div class="editable-label">
+    <ng-container *ngIf="!isEditing; else editField">
+      <ion-label (click)="enableEdit()">{{ itemName }}</ion-label>
+    </ng-container>
+
+    <ng-template #editField>
+      <ion-input
+        #inputEl
+        [(ngModel)]="itemName"
+        (ionBlur)="disableEdit()"
+        (keydown.enter)="disableEdit()"
+        (ionViewDidEnter)="focusInput()"
+        autofocus
+        clearInput
+      ></ion-input>
+    </ng-template>
+  </div>
+
+  <ion-fab-button
+    size="small"
+    color="light"
+    (click)="emitItemDelted()"
+    slot="end"
+  >
+    <ion-icon name="trash" color="dark"></ion-icon>
+  </ion-fab-button>
+</ion-item>
