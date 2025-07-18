@@ -18,6 +18,7 @@
           [itemName]="item.name"
           [index]="index"
           (itemDeleted)="deleteItem($event)"
+          (nameChanged)="updateItemName($event, index)"
         ></app-shopping-list-row>
         }
       </ion-reorder-group>

@@ -3,11 +3,12 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from './../shared.module';
 import { ShoppingListComponent } from './shopping-list.component';
+import { ShoppingListService } from './shopping-list.service';
 
 @NgModule({
   imports: [
     SharedModule,
-    ShoppingListComponent, // <-- import the standalone component here
+    ShoppingListComponent,
     RouterModule.forChild([
       {
         path: '',
@@ -15,5 +16,6 @@ import { ShoppingListComponent } from './shopping-list.component';
       },
     ]),
   ],
+  providers: [ShoppingListService],
 })
 export class ShoppingListModule {}

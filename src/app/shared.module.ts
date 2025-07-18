@@ -22,6 +22,7 @@ import {
   IonReorder,
   IonReorderGroup,
 } from '@ionic/angular/standalone';
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     IonReorder,
     IonReorderGroup,
+    IonicStorageModule.forRoot(),
   ],
   exports: [
     CommonModule,

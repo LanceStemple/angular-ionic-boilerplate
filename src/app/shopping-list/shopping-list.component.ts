@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
 import { addIcons } from 'ionicons';
 import { add, trash, trashBin } from 'ionicons/icons';
 import type { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 import { SharedModule } from '../shared.module';
 import { ShoppingListRowComponent } from './shopping-list-row/shopping-list-row.component';
-
-interface ShoppingListItem {
-  name: string;
-  completed: boolean;
-}
+import { ShoppingListItem } from './modals/shopping-item.modal';
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -22,44 +18,40 @@ export class ShoppingListComponent implements OnInit {
   public addMode = false;
   public items: ShoppingListItem[] = [];
 
-  constructor() {
+  constructor(private shoppingListService: ShoppingListService) {
     addIcons({ add, trash, trashBin });
   }
 
-  ngOnInit() {
-    this.generateItems();
+  async ngOnInit() {
+    this.items = await this.shoppingListService.getItems();
   }
 
-  public addItem() {
+  public async addItem() {
     this.addMode = true;
     this.items.push({ name: 'New Item', completed: false });
+    await this.shoppingListService.saveItems(this.items);
   }
 
-  public deleteItem(index: number) {
+  public async deleteItem(index: number) {
     this.items.splice(index, 1);
+    await this.shoppingListService.saveItems(this.items);
   }
 
   public onIonInfinite(event: InfiniteScrollCustomEvent) {
-    this.generateItems();
     setTimeout(() => {
       event.target.complete();
     }, 500);
   }
 
-  public reorderItems(event: any) {
-    const itemToMove = this.items.splice(event.detail.from, 1)[0];
-    this.items.splice(event.detail.to, 0, itemToMove);
-    event.detail.complete();
+  public async updateItemName($event: string, index: number) {
+    this.items[index].name = $event;
+    await this.shoppingListService.saveItems(this.items);
   }
 
-  private generateItems() {
-    this.items = [
-      {
-        name: 'Applessssssssss',
-        completed: false,
-      },
-      { name: 'Bananas', completed: false },
-      { name: 'Oranges', completed: false },
-    ];
+  public async reorderItems(event: any) {
+    const itemToMove = this.items.splice(event.detail.from, 1)[0];
+    this.items.splice(event.detail.to, 0, itemToMove);
+    await this.shoppingListService.saveItems(this.items);
+    event.detail.complete();
   }
 }
