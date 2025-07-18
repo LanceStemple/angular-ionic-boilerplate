@@ -1,6 +1,6 @@
 <ion-item>
   <ion-reorder slot="start"></ion-reorder>
-  <ion-checkbox slot="start"></ion-checkbox>
+  <ion-checkbox slot="start" [(ngModel)]="itemCompleted" (ionChange)="emitItemCompleted()"></ion-checkbox>
 
   <div class="editable-label">
     <ng-container *ngIf="!isEditing; else editField">

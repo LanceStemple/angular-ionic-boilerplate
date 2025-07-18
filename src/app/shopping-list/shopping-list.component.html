@@ -16,7 +16,9 @@
         <app-shopping-list-row
           [autoFocus]="addMode"
           [itemName]="item.name"
+          [itemCompleted]="item.completed"
           [index]="index"
+          (completedChanged)="updateItemChecked(index)"
           (itemDeleted)="deleteItem($event)"
           (nameChanged)="updateItemName($event, index)"
         ></app-shopping-list-row>

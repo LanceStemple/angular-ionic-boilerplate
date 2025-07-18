@@ -24,10 +24,12 @@ export class ShoppingListRowComponent implements OnInit {
   @ViewChild('inputEl', { static: false }) inputElRef!: IonInput;
 
   @Input() itemName!: string;
+  @Input() itemCompleted!: boolean;
   @Input() index!: number;
   @Input() autoFocus = false;
 
   @Output() itemDeleted = new EventEmitter<number>();
+  @Output() completedChanged = new EventEmitter<number>();
   @Output() nameChanged = new EventEmitter<string>();
 
   isEditing: boolean = false;
@@ -50,6 +52,10 @@ export class ShoppingListRowComponent implements OnInit {
     } catch (err) {
       console.warn('Focus failed:', err);
     }
+  }
+
+  public emitItemCompleted() {
+    this.completedChanged.emit(this.index);
   }
 
   public emitItemDeleted() {

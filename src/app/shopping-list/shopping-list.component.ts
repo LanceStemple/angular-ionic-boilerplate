@@ -48,6 +48,12 @@ export class ShoppingListComponent implements OnInit {
     await this.shoppingListService.saveItems(this.items);
   }
 
+  public async updateItemChecked(index: number) {
+    console.warn('Updating item completed status:', index);
+    this.items[index].completed = !this.items[index].completed;
+    await this.shoppingListService.saveItems(this.items);
+  }
+
   public async reorderItems(event: any) {
     const itemToMove = this.items.splice(event.detail.from, 1)[0];
     this.items.splice(event.detail.to, 0, itemToMove);
