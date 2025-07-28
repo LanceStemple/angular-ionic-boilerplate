@@ -18,13 +18,6 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./settings/settings.module').then((m) => m.SettingsModule),
       },
-      {
-        path: 'shopping-list',
-        loadChildren: () =>
-          import('./shopping-list/shopping-list.module').then(
-            (m) => m.ShoppingListModule
-          ),
-      },
     ],
   },
   // other routes if any
